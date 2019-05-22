@@ -11,7 +11,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv B6391CB2CFBA643D \
             zeroc-icegrid=${ICEGRID_VERSION}-* \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 	
-RUN mkdir /etc/zeroc && chmod -R 755 /etc/zeroc && ls -l && cp /etc/icegridregistry.conf /etc/zeroc/. && ls -l
+RUN mkdir /etc/zeroc && chmod -R 755 /etc/zeroc && cd /etc/zeroc ls -l && cp /etc/icegridregistry.conf /etc/zeroc/. && cd /etc/zeroc && ls -l
 
 EXPOSE 4061 4062
 
