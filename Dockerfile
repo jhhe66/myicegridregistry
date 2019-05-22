@@ -10,9 +10,12 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv B6391CB2CFBA643D \
     && apt-get install --no-install-recommends --no-install-suggests -y \
             zeroc-icegrid=${ICEGRID_VERSION}-* \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	
+RUN mkdir /etc/zeroc && chmod -R 755 /etc/zeroc && ls -l && cp /etc/icegridregistry.conf /etc/zeroc/. && ls -l
 
 EXPOSE 4061 4062
 
 VOLUME ["/var/lib/ice/icegrid"]
+VOLUME ["/etc/zeroc"]
 
-ENTRYPOINT ["/usr/bin/icegridregistry", "--Ice.Config=/etc/icegridregistry.conf", "--IceGrid.Registry.LMDB.Path=/var/lib/ice/icegrid"]
+ENTRYPOINT ["/usr/bin/icegridregistry", "--Ice.Config=/etc/zeroc/icegridregistry.conf", "--IceGrid.Registry.LMDB.Path=/var/lib/ice/icegrid"]
