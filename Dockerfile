@@ -18,6 +18,7 @@ RUN cd /etc/zeroc && ls -l
 RUN cp /etc/icegridregistry.conf /etc/zeroc/. 
 RUN cd /etc/zeroc && ls -l
 RUN chmod 755 icegridregistry.conf && ls -l
+RUN cat icegridregistry.conf
 
 EXPOSE 4061 4062
 
